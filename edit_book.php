@@ -2,12 +2,20 @@
 require_once "./controllers/book_controller.php";
 require_once "./controllers/author_controller.php";
 
-if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-  $b = BookController::get((int) $_GET['id']);
+if (isset($_GET['id'])) {
+  $id = filter_var($_GET['id'] ?? null, FILTER_VALIDATE_INT) ?: 0;
+
+  if ($id == 0) {
+    return header("Location: /books.php");
+  }
+
+  $b = BookController::get($id);
 
   if (is_null($b)) {
     return header("Location: /books.php");
   }
+} else {
+  return header("Location: /books.php");
 }
 ?>
 <!doctype html>

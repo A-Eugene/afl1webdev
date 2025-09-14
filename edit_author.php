@@ -1,12 +1,20 @@
 <?php
 require_once "./controllers/author_controller.php";
 
-if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-  $author = AuthorController::get((int) $_GET['id']);
+if (isset($_GET['id'])) {
+  $id = filter_var($_GET['id'] ?? null, FILTER_VALIDATE_INT) ?: 0;
+  
+  if ($id == 0) {
+    return header("Location: /authors.php");
+  }
+  
+  $author = AuthorController::get($id);
 
   if (is_null($author)) {
     return header("Location: /authors.php");
   }
+} else {
+  return header("Location: /authors.php");
 }
 ?>
 <!doctype html>

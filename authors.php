@@ -1,7 +1,7 @@
 <?php
 require_once "./controllers/author_controller.php";
 
-$non_empty_authors = AuthorController::getNonEmptyAuthors();
+$non_empty_author_ids = AuthorController::getNonEmptyAuthors();
 ?>
 <!doctype html>
 <html lang="id">
@@ -76,7 +76,7 @@ $non_empty_authors = AuthorController::getNonEmptyAuthors();
   </div>
 </body>
 <script>
-  const nonEmptyAuthors = new Set([<?= implode(',', $non_empty_authors) ?>]);
+  const nonEmptyAuthors = new Set([<?= implode(',', $non_empty_author_ids) ?>]);
 
   $('form').on('submit', function(e) {
     let fd = new FormData(this);

@@ -189,14 +189,6 @@ if (isset($_POST['button_delete_book'], $_POST['book_id'])) {
 }
 
 if (isset($_POST['button_add_book'])) {
-  // BookController::create(
-  //   $_POST['title'] ?? '',
-  //   (int) ($_POST['publication_year'] ?? -1),
-  //   (int) ($_POST['page_count'] ?? -1),
-  //   $_POST['isbn_number'] ?? '',
-  //   (int) ($_POST['author_id'] ?? -1),
-  //   $_POST['summary_text'] ?? ''
-  // );
   BookController::create(
     trim($_POST['title'] ?? ''),
     filter_var($_POST['publication_year'] ?? null, FILTER_VALIDATE_INT) ?: 0,
@@ -210,15 +202,6 @@ if (isset($_POST['button_add_book'])) {
 }
 
 if (isset($_POST['button_edit_book'])) {
-  // BookController::edit(
-  //   (int) ($_POST['id'] ?? -1),
-  //   $_POST['title'] ?? '',
-  //   (int) ($_POST['publication_year'] ?? -1),
-  //   (int) ($_POST['page_count'] ?? -1),
-  //   $_POST['isbn_number'] ?? '',
-  //   (int) ($_POST['author_id'] ?? -1),
-  //   $_POST['summary_text'] ?? ''
-  // );
   BookController::edit(
     filter_var($_POST['id'] ?? null, FILTER_VALIDATE_INT) ?: 0,
     trim($_POST['title'] ?? ''),

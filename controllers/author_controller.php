@@ -35,7 +35,7 @@ class AuthorController
     global $pdo;
 
     try {
-      $stmt = $pdo->prepare("SELECT * FROM Authors");
+      $stmt = $pdo->prepare("SELECT id, full_name FROM Authors");
       $stmt->execute();
     } catch (PDOException $e) {
       return;
@@ -209,7 +209,7 @@ class AuthorController
         ':biography_summary' => $biography_summary
       ]);
     } catch (PDOException $e) {
-      echo $e;
+      // echo $e;
     }
   }
 }
@@ -223,18 +223,12 @@ if (isset($_POST['button_add_author'])) {
   header("Location: /authors.php");
 }
 
-if (isset($_POST['button_delete_author'], $_POST['author_id'])) {
+if (isset($_POST['button_delete_author'])) {
   AuthorController::delete(filter_var($_POST['author_id'] ?? null, FILTER_VALIDATE_INT) ?: 0);
   header("Location: /authors.php");
 }
 
 if (isset($_POST['button_edit_author'])) {
-  // AuthorController::edit(
-  //   (int) ($_POST['id'] ?? -1),
-  //   $_POST['full_name'] ?? '',
-  //   $_POST['birth_date'] ?? '',
-  //   $_POST['biography_summary'] ?? ''
-  // );
   AuthorController::edit(
     filter_var($_POST['id'] ?? null, FILTER_VALIDATE_INT) ?: 0,
     trim($_POST['full_name'] ?? ''),

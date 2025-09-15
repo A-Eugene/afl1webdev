@@ -24,13 +24,13 @@ class BookController
 
     foreach ($rows as $row) {
       $book = new BookModel();
-      $book->id = $row['id'];
-      $book->author = $row['author'];      // assumes your query joins authors
-      $book->title = $row['title'];
-      $book->publication_year = $row['publication_year'];
-      $book->page_count = $row['page_count'];
-      $book->isbn_number = $row['isbn_number'];
-      $book->summary_text = $row['summary_text'];
+      $book->setId($row['id']);
+      $book->setAuthor($row['author']);   // assumes your query joins authors
+      $book->setTitle($row['title']);
+      $book->setPublicationYear($row['publication_year']);
+      $book->setPageCount($row['page_count']);
+      $book->setIsbnNumber($row['isbn_number']);
+      $book->setSummaryText($row['summary_text']);
 
       $books[] = $book;
     }
@@ -171,13 +171,20 @@ class BookController
     $row = $rows[0];
 
     $book = new BookModel();
-    $book->id = $row['id'];
-    $book->author = $row['author'];      // assumes your query joins authors
-    $book->title = $row['title'];
-    $book->publication_year = $row['publication_year'];
-    $book->page_count = $row['page_count'];
-    $book->isbn_number = $row['isbn_number'];
-    $book->summary_text = $row['summary_text'];
+    // $book->id = $row['id'];
+    // $book->author = $row['author'];      // assumes your query joins authors
+    // $book->title = $row['title'];
+    // $book->publication_year = $row['publication_year'];
+    // $book->page_count = $row['page_count'];
+    // $book->isbn_number = $row['isbn_number'];
+    // $book->summary_text = $row['summary_text'];
+    $book->setId($row['id']);
+    $book->setAuthor($row['author']);   // assumes your query joins authors
+    $book->setTitle($row['title']);
+    $book->setPublicationYear($row['publication_year']);
+    $book->setPageCount($row['page_count']);
+    $book->setIsbnNumber($row['isbn_number']);
+    $book->setSummaryText($row['summary_text']);
 
     return $book;
   }

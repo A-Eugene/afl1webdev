@@ -43,18 +43,18 @@ $non_empty_author_ids = AuthorController::getNonEmptyAuthors();
             <?php foreach (AuthorController::getAll() as $index => $author): ?>
               <tr>
                 <td class="px-3 py-2 border"><?= $index + 1 ?></td>
-                <td class="px-3 py-2 border"><?= htmlspecialchars($author->full_name) ?></td>
-                <td class="px-3 py-2 border"><?= htmlspecialchars($author->birth_date) ?></td>
-                <td class="px-3 py-2 border"><?= htmlspecialchars($author->biography_summary) ?></td>
+                <td class="px-3 py-2 border"><?= htmlspecialchars($author->getFullName()) ?></td>
+                <td class="px-3 py-2 border"><?= htmlspecialchars($author->getBirthDate()) ?></td>
+                <td class="px-3 py-2 border"><?= htmlspecialchars($author->getBiographySummary()) ?></td>
                 <td class="px-3 py-2 border">
                   <div class="flex gap-1">
-                    <a href="/edit_author.php?id=<?= htmlspecialchars($author->id) ?>">
+                    <a href="/edit_author.php?id=<?= htmlspecialchars($author->getId()) ?>">
                       <button name="button_edit" class="bg-indigo-300 py-2 px-3 text-white text-sm rounded-md font-semibold">
                         Edit
                       </button>
                     </a>
                     <form method="POST" action="/controllers/author_controller.php">
-                      <input type="hidden" value="<?= htmlspecialchars($author->id) ?>" name="author_id">
+                      <input type="hidden" value="<?= htmlspecialchars($author->getId()) ?>" name="author_id">
                       <button type="submit" name="button_delete_author" class="bg-red-300 py-2 px-3 text-white text-sm rounded-md font-semibold">
                         Delete
                       </button>

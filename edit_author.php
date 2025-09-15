@@ -39,25 +39,25 @@ if (isset($_GET['id'])) {
     <div class="bg-white rounded-xl shadow p-6">
       <h2 class="text-lg font-medium mb-4">Edit Author</h2>
       <form action="/controllers/author_controller.php" method="POST" class="space-y-4">
-        <input type="hidden" name="id" value="<?= $author->id ?>">
+        <input type="hidden" name="id" value="<?= $author->getId() ?>">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label class="block text-sm mb-1 text-gray-600 font-semibold">Full Name</label>
             <div class="flex gap-2 justify-center items-center">
-              <input type="text" class="flex-1 border rounded-md px-3 py-2 text-sm bg-gray-50" name="full_name" required value="<?= $author->full_name ?>">
+              <input type="text" class="flex-1 border rounded-md px-3 py-2 text-sm bg-gray-50" name="full_name" required value="<?= $author->getFullName() ?>">
             </div>
           </div>
           <div>
             <label class="block text-sm mb-1 text-gray-600 font-semibold">Birth Date</label>
             <div class="flex gap-2 justify-center items-center">
-              <input type="date" class="flex-1 border rounded-md px-3 py-2 text-sm bg-gray-50" name="birth_date" required value="<?= $author->birth_date ?>">
+              <input type="date" class="flex-1 border rounded-md px-3 py-2 text-sm bg-gray-50" name="birth_date" required value="<?= $author->getBirthDate() ?>">
             </div>
           </div>
         </div>
 
         <div>
           <label class="block text-sm mb-1 text-gray-600 font-semibold">Biography Summary</label>
-          <textarea name="biography_summary" class="w-full border rounded-md p-3 text-sm bg-gray-50" required><?= $author->biography_summary ?></textarea>
+          <textarea name="biography_summary" class="w-full border rounded-md p-3 text-sm bg-gray-50" required><?= $author->getBiographySummary() ?></textarea>
         </div>
 
         <button type="submit" name="button_edit_author"

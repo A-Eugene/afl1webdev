@@ -43,20 +43,20 @@ require_once "./controllers/book_controller.php";
             <?php foreach (BookController::getAll() as $index => $b): ?>
               <tr>
                 <td class="px-3 py-2 border"><?= $index + 1 ?></td>
-                <td class="px-3 py-2 border"><?= htmlspecialchars($b->title) ?></td>
-                <td class="px-3 py-2 border"><?= htmlspecialchars($b->author) ?></td>
-                <td class="px-3 py-2 border"><?= htmlspecialchars($b->summary_text) ?></td>
-                <td class="px-3 py-2 border"><?= htmlspecialchars($b->publication_year) ?></td>
-                <td class="px-3 py-2 border"><?= htmlspecialchars($b->page_count) ?></td>
+                <td class="px-3 py-2 border"><?= htmlspecialchars($b->getTitle()) ?></td>
+                <td class="px-3 py-2 border"><?= htmlspecialchars($b->getAuthor()) ?></td>
+                <td class="px-3 py-2 border"><?= htmlspecialchars($b->getSummaryText()) ?></td>
+                <td class="px-3 py-2 border"><?= htmlspecialchars($b->getPublicationYear()) ?></td>
+                <td class="px-3 py-2 border"><?= htmlspecialchars($b->getPageCount()) ?></td>
                 <td class="px-3 py-2 border">
                   <div class="flex gap-1">
-                    <a href="/edit_book.php?id=<?= htmlspecialchars($b->id) ?>">
+                    <a href="/edit_book.php?id=<?= htmlspecialchars($b->getId()) ?>">
                       <button name="button_edit" class="bg-indigo-300 py-2 px-3 text-white text-sm rounded-md font-semibold">
                         Edit
                       </button>
                     </a>
                     <form method="POST" action="/controllers/book_controller.php">
-                      <input type="hidden" value="<?= htmlspecialchars($b->id) ?>" name="book_id">
+                      <input type="hidden" value="<?= htmlspecialchars($b->getId()) ?>" name="book_id">
                       <button type="submit" name="button_delete_book" class="bg-red-300 py-2 px-3 text-white text-sm rounded-md font-semibold">
                         Delete
                       </button>

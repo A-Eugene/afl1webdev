@@ -53,8 +53,8 @@ require_once "./controllers/author_controller.php";
             <label class="block text-sm mb-1 text-gray-600 font-semibold">Author</label>
             <select class="w-full border rounded-md px-3 py-2 text-sm bg-gray-50" name="author_id">
               <?php foreach (AuthorController::getNames() as $author): ?>
-                <option value="<?= htmlspecialchars($author->id) ?>">
-                  <?= htmlspecialchars($author->full_name) ?>
+                <option value="<?= htmlspecialchars($author->getId()) ?>">
+                  <?= htmlspecialchars($author->getFullName()) ?>
                 </option>
               <?php endforeach; ?>
             </select>

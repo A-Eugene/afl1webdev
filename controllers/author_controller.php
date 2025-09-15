@@ -20,10 +20,10 @@ class AuthorController
 
     foreach ($rows as $row) {
       $author = new AuthorModel();
-      $author->id = $row['id'];
-      $author->full_name = $row['full_name'];      // assumes your query joins authors
-      $author->birth_date = $row['birth_date'];
-      $author->biography_summary = $row['biography_summary'];
+      $author->setId($row['id']);
+      $author->setFullName($row['full_name']);   // assumes your query joins authors
+      $author->setBirthDate($row['birth_date']);
+      $author->setBiographySummary($row['biography_summary']);
       $authors[] = $author;
     }
 
@@ -46,8 +46,8 @@ class AuthorController
 
     foreach ($rows as $row) {
       $author = new AuthorModel();
-      $author->id = $row['id'];
-      $author->full_name = $row['full_name'];      // assumes your query joins authors;
+      $author->setId($row['id']);
+      $author->setFullName($row['full_name']);   // assumes your query joins authors
       $authors[] = $author;
     }
 
@@ -156,10 +156,10 @@ class AuthorController
     $row = $rows[0];
 
     $author = new AuthorModel();
-    $author->id = $row['id'];
-    $author->full_name = $row['full_name'];
-    $author->birth_date = $row['birth_date'];
-    $author->biography_summary = $row['biography_summary'];
+    $author->setId($row['id']);
+    $author->setFullName($row['full_name']);   // assumes your query joins authors
+    $author->setBirthDate($row['birth_date']);
+    $author->setBiographySummary($row['biography_summary']);
 
     return $author;
   }

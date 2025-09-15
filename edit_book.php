@@ -40,38 +40,38 @@ if (isset($_GET['id'])) {
     <div class="bg-white rounded-xl shadow p-6">
       <h2 class="text-lg font-medium mb-4">Edit Book</h2>
       <form action="/controllers/book_controller.php" method="POST" class="space-y-4">
-        <input type="hidden" name="id" value="<?= $b->id ?>">
+        <input type="hidden" name="id" value="<?= $b->getId() ?>">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label class="block text-sm mb-1 text-gray-600 font-semibold">Title</label>
             <div class="flex gap-2 justify-center items-center">
-              <input type="text" class="flex-1 border rounded-md px-3 py-2 text-sm bg-gray-50" name="title" required value="<?= $b->title ?>">
+              <input type="text" class="flex-1 border rounded-md px-3 py-2 text-sm bg-gray-50" name="title" required value="<?= $b->getTitle() ?>">
             </div>
           </div>
           <div>
             <label class="block text-sm mb-1 text-gray-600 font-semibold">Publication Year</label>
             <div class="flex gap-2 justify-center items-center">
-              <input type="number" class="flex-1 border rounded-md px-3 py-2 text-sm bg-gray-50" min="0" step="1" name="publication_year" required value="<?= $b->publication_year ?>">
+              <input type="number" class="flex-1 border rounded-md px-3 py-2 text-sm bg-gray-50" min="0" step="1" name="publication_year" required value="<?= $b->getPublicationYear() ?>">
             </div>
           </div>
           <div>
             <label class="block text-sm mb-1 text-gray-600 font-semibold">Page Count</label>
             <div class="flex gap-2 justify-center items-center">
-              <input type="number" class="flex-1 border rounded-md px-3 py-2 text-sm bg-gray-50" min="0" step="1" name="page_count" required value="<?= $b->page_count ?>">
+              <input type="number" class="flex-1 border rounded-md px-3 py-2 text-sm bg-gray-50" min="0" step="1" name="page_count" required value="<?= $b->getPageCount() ?>">
             </div>
           </div>
           <div>
             <label class="block text-sm mb-1 text-gray-600 font-semibold">ISBN Number</label>
             <div class="flex gap-2 justify-center items-center">
-              <input type="text" class="flex-1 border rounded-md px-3 py-2 text-sm bg-gray-50" name="isbn_number" required value="<?= $b->isbn_number ?>">
+              <input type="text" class="flex-1 border rounded-md px-3 py-2 text-sm bg-gray-50" name="isbn_number" required value="<?= $b->getIsbnNumber() ?>">
             </div>
           </div>
           <div>
             <label class="block text-sm mb-1 text-gray-600 font-semibold">Author</label>
             <select class="w-full border rounded-md px-3 py-2 text-sm bg-gray-50" name="author_id">
               <?php foreach (AuthorController::getNames() as $author): ?>
-                <option value="<?= htmlspecialchars($author->id) ?>" <?= $author->full_name == $b->author ? 'selected' : '' ?>>
-                  <?= htmlspecialchars($author->full_name) ?>
+                <option value="<?= htmlspecialchars($author->getId()) ?>" <?= $author->getFullName() == $b->getAuthor() ? 'selected' : '' ?>>
+                  <?= htmlspecialchars($author->getFullName()) ?>
                 </option>
               <?php endforeach; ?>
             </select>
@@ -80,7 +80,7 @@ if (isset($_GET['id'])) {
 
         <div>
           <label class="block text-sm mb-1 text-gray-600 font-semibold">Summary Text</label>
-          <textarea name="summary_text" class="w-full border rounded-md p-3 text-sm bg-gray-50" required><?= $b->summary_text ?></textarea>
+          <textarea name="summary_text" class="w-full border rounded-md p-3 text-sm bg-gray-50" required><?= $b->getSummaryText() ?></textarea>
         </div>
 
         <button type="submit" name="button_edit_book"

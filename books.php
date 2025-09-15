@@ -15,12 +15,8 @@ require_once "./controllers/book_controller.php";
 <body class="bg-gray-100 text-gray-900">
   <div class="max-w-5xl mx-auto p-6 space-y-6 ">
     <div class="bg-gray-50 rounded-xl shadow p-2 flex text-xl font-semibold">
-      <button class="flex-1 rounded-xl p-3 bg-indigo-300 text-white cursor-pointer">
-        <a href="/books.php">Books</a>
-      </button>
-      <button class="flex-1 rounded-xl p-3 cursor-pointer">
-        <a href="/authors.php">Authors</a>
-      </button>
+      <a class="flex-1 rounded-xl p-3 bg-indigo-300 text-white cursor-pointer no-underline text-center" href="/books.php">Books</a>
+      <a class="flex-1 rounded-xl p-3 cursor-pointer no-underline text-center" href="/authors.php">Authors</a>
     </div>
 
     <div class="bg-white rounded-xl shadow p-6">
